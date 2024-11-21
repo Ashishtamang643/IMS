@@ -20,13 +20,13 @@ header {
     width: 80vw;
     min-width: 800px;
     max-width: 1200px;
-    height: 600px;
+    height: 800px;
     border-radius: 20px;
     min-height: 600px;
     background: #f0f0f0;
     display: flex;
     justify-content: space-evenly;
-    overflow: hidden;
+    overflow: auto;
     box-shadow: 10px 10px 20px #bcbcbc;
 }
 .container> .sidebar{

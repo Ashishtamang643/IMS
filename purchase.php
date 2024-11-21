@@ -46,6 +46,14 @@ $filename=$_SERVER['PHP_SELF'];
             <input type="text" name="vendor" required>
             <label for='remarks'>Remarks</label>
             <textarea name='remarks'></textarea>
+            
+
+            <label for="color">color:</label>
+            <input type="text" id="color" name="color" required>
+
+            <label for="size">size:</label>
+            <input type="text" id="size" name="size" required>
+
             <button type="submit">Add to Inventory</button>
         </form>
     </div>
@@ -64,16 +72,20 @@ if(isset($_POST['product'])){
     $price = $_POST['price'];
     $vendor = $_POST['vendor'];
     $remarks = $_POST['remarks'];
+    $color = $_POST['color'];
+    $size = $_POST['size'];
 
 
-    $findqry="SELECT * from inventory WHERE name='$product'";
+    $findqry="SELECT * from item WHERE item_name='$product'";
     $result = mysqli_query($conn, $findqry);    
     // echo "<script>console.log($result)</script>";
     if(mysqli_num_rows($result)> 0){
         $row=mysqli_fetch_assoc($result);
         $updatedQty=$row['quantity']+$quantity;
+        $color=$row['color']+$color;
+        $size=$row['size']+$size;
 
-        $updateqry="UPDATE `inventory` SET `quantity`='$updatedQty', `rate`='$price' WHERE `name`='$product'";
+        $updateqry="UPDATE item SET `quantity`='$updatedQty', `rate`='$price', `color`='$color' ,`size`='$size', WHERE `name`='$product'";
         if(mysqli_query($conn,$updateqry)){
         // echo "<script>alert('Data Updated Successfully')</script>";
         }else{
@@ -82,7 +94,7 @@ if(isset($_POST['product'])){
     }
     //add to inventory
     else{
-        $qry = "INSERT INTO inventory(name, quantity, rate) VALUES('$product', '$quantity', '$price')";
+        $qry = "INSERT INTO item(item_name, quantity, price, color, size) VALUES('$product', '$quantity', '$price', '$color', '$size')";
         
         if(mysqli_query($conn, $qry)){
             echo "<script>alert('Data Inserted Successfully')</script>";
@@ -92,15 +104,15 @@ if(isset($_POST['product'])){
     }
 
     //add to Purchase Record
-    $qry2 = "INSERT INTO purchase_record(name, quantity, rate, vendor, remarks) VALUES('$product', '$quantity', '$price'
-    ,'$vendor', '$remarks')";
+    $qry2 = "INSERT INTO purchase(item_name, quantity, price, vendor, remarks, size, color) VALUES('$product', '$quantity', '$price'
+    ,'$vendor', '$remarks' ,'$color', '$size')";
     
     if(mysqli_query($conn, $qry2)){
         // echo "<script>alert('Data Inserted into Record Successfully')</script>";
         session_start();
         $_SESSION["product"] = $product;
         $_SESSION["qty"] = $quantity;
-        $_SESSION["rate"] = $price;
+        $_SESSION["price"] = $price;
         $_SESSION["vendor"] = $vendor;
         include("purchaseBill.php");
     } else {

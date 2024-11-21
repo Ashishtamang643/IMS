@@ -47,6 +47,13 @@ $filename=$_SERVER['PHP_SELF'];
 
             <label for='remarks'>Remarks</label>
             <textarea name='remarks' id='remarks'></textarea>
+
+            <label for="color">color:</label>
+            <input type="text" id="color" name="color" required>
+
+            <label for="size">size:</label>
+            <input type="text" id="size" name="size" required>
+
             <button type="submit">Sale</button>
         </form>
         </div>
@@ -64,36 +71,38 @@ if(isset($_POST['product'])){
     $product=$_POST['product'];
     $quantity=$_POST['quantity'];
     $remarks=$_POST['remarks'];
+    $color=$_POST['color'];
+    $size=$_POST['size'];
     include('db.php');
 
    
 
-    $qry="SELECT * FROM inventory where name='$product'";
+    $qry="SELECT * FROM item where item_name='$product'";
     $result=mysqli_query($conn,$qry);
     if($result){
         $row = mysqli_fetch_assoc($result);
         $updatedQty = $row['quantity'] - $quantity;
         if( $updatedQty < 0){
             echo "<script>alert('Sale Failed! The Remaining Stock is just  ".$row['quantity']."')</script>";
-            mysqli_query($conn,"DELETE FROM `inventory` WHERE name='$product'");
+            mysqli_query($conn,"DELETE FROM `item` WHERE item_name='$product'");
             die();
         }
-        $rate=$row['rate'];
-        $total=$rate*$quantity;
+        $price=$row['price'];
+        $total=$price*$quantity;
         echo "<script>console.log('" . $row['quantity'] . "')</script>";
-        $qry2="UPDATE `inventory` SET `quantity`='$updatedQty' WHERE name='$product'";
+        $qry2="UPDATE `item` SET `quantity`='$updatedQty' WHERE item_name='$product'";
         mysqli_query($conn, $qry2);
 
 
 
-        $saleqry="INSERT INTO salesrecord(consumer, name, rate, quantity, total, remarks) VALUES('$consumer',
-        '$product','$rate','$quantity','$total','$remarks')";
+        $saleqry="INSERT INTO sales(consumer,item_name, price, quantity, total, remarks) VALUES('$consumer',
+        '$product','$price','$quantity','$total','$remarks')";
        if( mysqli_query($conn,$saleqry)){
             session_start();
-            $_SESSION['name']="$consumer";
-            $_SESSION['product']="$product";
-            $_SESSION['qty']="$quantity";
-            $_SESSION['rate']="$rate";
+            // $_SESSION['item_name']="$consumer";
+            // $_SESSION['product']="$product";
+            // $_SESSION['qty']="$quantity";
+            // $_SESSION['price']="$price";
            include('bill.php');
 
        }

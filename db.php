@@ -1,5 +1,5 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "ims");
+    $conn = mysqli_connect("localhost", "root", "", "original_ims");
     if (mysqli_connect_errno()) {
         echo '<script>console.log("Something went Wrong!");</script>';
 

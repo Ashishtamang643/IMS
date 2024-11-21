@@ -35,7 +35,7 @@ $filename=$_SERVER['PHP_SELF'];
            <?php
             include('db.php');
 
-            $qry='SELECT * FROM inventory';
+            $qry='SELECT * FROM item';
             $result=$conn->query($qry);
             if($result){
                 echo "<table border=1 cellspacing=0>
@@ -50,9 +50,9 @@ $filename=$_SERVER['PHP_SELF'];
                         echo ' style="background-color: red;"';
                     }
                     echo '>';
-                    echo '<td>' . $row['name'] . '</td>';
+                    echo '<td>' . $row['item_name'] . '</td>';
                     echo '<td>' . $row['quantity'] . '</td>';
-                    echo '<td>' . $row['rate'] . '</td>';
+                    echo '<td>' . $row['price'] . '</td>';
                     echo '</tr>';
                 }
                 echo '</table>';
