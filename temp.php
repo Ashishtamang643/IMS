@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery Inventory System</title>
+    <title>Inventory System</title>
     <style>
         body {
     font-family: 'Cursive', sans-serif;
@@ -92,7 +92,7 @@ footer {
 <body>
 
     <header class="neumorphic">
-        <h1>Bakery Inventory System</h1>
+        <h1>Inventory System</h1>
     </header>
 
     <div class="container neumorphic">
@@ -135,7 +135,7 @@ footer {
     </div>
 
     <footer class="neumorphic">
-        <p>&copy; 2023 Bakery Inventory System</p>
+        <p>&copy;Inventory Management System</p>
     </footer>
 
 </body>

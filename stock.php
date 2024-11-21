@@ -21,7 +21,7 @@ $filename=$_SERVER['PHP_SELF'];
 </head>
 <body>
     <header>
-        <h1>Bakery Inventory Management System</h1>
+        <h1>Inventory Management System</h1>
     </header>
     <div class="container neumorphic">
        <div class="sidebar">
@@ -62,7 +62,7 @@ $filename=$_SERVER['PHP_SELF'];
        </div>
     </div>
     <footer>
-        <p>&copy; 2023 Inventory Management System</p>
+        <p>&copy;Inventory Management System</p>
     </footer>
 <script src='script.js'></script>
 </body>

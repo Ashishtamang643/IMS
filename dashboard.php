@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <h1>Bakery Inventory Management System</h1>
+        <h1>Inventory Management System</h1>
     </header>
 
     <div class="container neumorphic">
@@ -30,7 +30,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2023 Inventory Management System</p>
+        <p>&copy; Inventory Management System</p>
     </footer>
     <script src='script.js'></script>
 </body>
