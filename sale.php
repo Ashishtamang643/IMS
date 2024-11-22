@@ -45,6 +45,12 @@ $filename=$_SERVER['PHP_SELF'];
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" required>
 
+            <label for="price">price:</label>
+            <input type="text" id="price" name="price" required>
+
+            <label for="profit">profit:</label>
+            <input type="text" id="profit" name="profit" required>
+
             <label for='remarks'>Remarks</label>
             <textarea name='remarks' id='remarks'></textarea>
 
@@ -53,6 +59,8 @@ $filename=$_SERVER['PHP_SELF'];
 
             <label for="size">size:</label>
             <input type="text" id="size" name="size" required>
+
+           
 
             <button type="submit">Sale</button>
         </form>
@@ -70,16 +78,16 @@ if(isset($_POST['product'])){
     $consumer=$_POST['consumer'];
     $product=$_POST['product'];
     $quantity=$_POST['quantity'];
+    $price=$_POST['price'];
+    $profit=$_POST['profit'];
     $remarks=$_POST['remarks'];
     $color=$_POST['color'];
     $size=$_POST['size'];
     include('db.php');
 
-   
-
     $qry="SELECT * FROM item where item='$product' and size='$size' and color='$color' AND price='$price'";
     $result=mysqli_query($conn,$qry);
-    if($result){
+    if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
         $updatedQty = $row['quantity'] - $quantity;
         if( $updatedQty < 0){
@@ -94,10 +102,13 @@ if(isset($_POST['product'])){
         mysqli_query($conn, $qry2);
 
 
-
+        $selling_price=$price+$profit;
         $saleqry="INSERT INTO sales(consumer,item, price, quantity, remarks,color,size) VALUES('$consumer',
-        '$product','$price','$quantity','$remarks','$color', '$size')";
+        '$product','$selling_price','$quantity','$remarks','$color', '$size')";
+       
+
        if( mysqli_query($conn,$saleqry)){
+        echo "<script>alert('Your product has been sold!')</script>";
             session_start();
             // $_SESSION['item_name']="$consumer";
             // $_SESSION['product']="$product";
