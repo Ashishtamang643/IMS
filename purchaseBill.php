@@ -49,28 +49,31 @@
         <div class="bill">
             <h2>Purchase Bill</h2>
           <?php
-                $total=$_SESSION['rate']*$_SESSION['qty'];
+                $total=$_SESSION['price']*$_SESSION['qty'];
                 echo "  <table border=0 cellspacing=0>
+
                       <tr>
                           <td>Consumer Name</td>
-                          <td>Babish Bakery</td>
+                          <td>AB Inventory</td>
                       </tr>
+                      <tr>
+                          <td>Supplier Name</td>
+                          <td>".$_SESSION['vendor']."</td>
+                      </tr>
+                
                       <tr>
                           <td>Product</td>
                           <td>".$_SESSION['product']."</td>
                       </tr>
                       <tr>
                           <td>Rate</td>
-                          <td>".$_SESSION['rate']."</td>
+                          <td>".$_SESSION['price']."</td>
                       </tr>
                       <tr>
                           <td>Quantity</td>
                           <td>".$_SESSION['qty']."</td>
                       </tr>
-                      <tr>
-                      <td>Quantity</td>
-                      <td>".$_SESSION['vendor']."</td>
-                  </tr>
+                      
                       <tr>
                           <td>Total Amount</td>
                           <td>Rs. ".$total."</td>
@@ -102,7 +105,7 @@
 
     function handleEsewaPay(){
   
-            var rate = <?php echo $_SESSION['rate']; ?>;
+            var rate = <?php echo $_SESSION['price']; ?>;
             var qty = <?php echo $_SESSION['qty']; ?>;
             var Datenow = new Date().toLocaleString();
             let total=rate*qty

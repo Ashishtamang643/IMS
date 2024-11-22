@@ -37,25 +37,26 @@ $filename=$_SERVER['PHP_SELF'];
             <h2>Sales Record</h2>
             <?php
             include('db.php');
-            $qry='SELECT * FROM salesrecord';
+            $qry='SELECT * FROM sales';
             $result=$conn->query($qry);
             if($result){
                 echo "<table border=1 cellspacing=0>
                 <tr>
-                    <th>Consumer</th>
+                    <th>consumer</th>
                     <th>Product</th>
-                    <th>rate</th>
-                    <th>Qty</th>
+                    <th>price</th>
+                    <th>quantity</th>
                     <th>Total</th>
                     <th>Remarks</th>
                 </tr>";
                 while($row=$result->fetch_assoc()){
+                    $total=$row['price']*$row['quantity'];
                     echo '<tr>';
                     echo '<td>'.$row['consumer'].'</td>';
-                        echo '<td>'.$row['name'].'</td>';
-                        echo '<td>'.$row['rate'].'</td>';
+                        echo '<td>'.$row['item'].'</td>';
+                        echo '<td>'.$row['price'].'</td>';
                         echo '<td>'.$row['quantity'].'</td>';
-                        echo '<td>'.$row['total'].'</td>';
+                        echo '<td>'.$total.'</td>';
                         echo '<td>'.$row['remarks'].'</td>';
                     echo '</tr>';
                 }

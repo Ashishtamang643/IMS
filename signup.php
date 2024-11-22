@@ -99,7 +99,7 @@ if(isset($_POST["email"]) && isset($_POST['password']) && isset($_POST['confirmP
     }
     try{
         $hash=md5($password);
-    $qry="INSERT INTO users(name, email, password) VALUES('$name','$email','$hash')";
+    $qry="INSERT INTO user(name, email, password) VALUES('$name','$email','$hash')";
     if(mysqli_query($conn,$qry)){
         echo "<script>alert('User Created Successfully')</script>";
         // header('location: index.php');

@@ -87,7 +87,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
     include('db.php');
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $qry="SELECT * FROM users WHERE email='$email'";
+    $qry="SELECT * FROM user WHERE email='$email'";
     $result=mysqli_query($conn,$qry);
     $row=mysqli_fetch_assoc($result);
     if($row){

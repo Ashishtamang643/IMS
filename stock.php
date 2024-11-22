@@ -42,7 +42,9 @@ $filename=$_SERVER['PHP_SELF'];
                 <tr>
                     <th>Name</th>
                     <th>Qty</th>
-                    <th>Rate</th>
+                    <th>price</th>
+                    <th>color</th>
+                    <th>size</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr';
@@ -50,9 +52,11 @@ $filename=$_SERVER['PHP_SELF'];
                         echo ' style="background-color: red;"';
                     }
                     echo '>';
-                    echo '<td>' . $row['item_name'] . '</td>';
+                    echo '<td>' . $row['item'] . '</td>';
                     echo '<td>' . $row['quantity'] . '</td>';
                     echo '<td>' . $row['price'] . '</td>';
+                    echo '<td>' . $row['color'] . '</td>';
+                    echo '<td>' . $row['size'] . '</td>';
                     echo '</tr>';
                 }
                 echo '</table>';

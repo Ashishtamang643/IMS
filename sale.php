@@ -77,33 +77,33 @@ if(isset($_POST['product'])){
 
    
 
-    $qry="SELECT * FROM item where item_name='$product'";
+    $qry="SELECT * FROM item where item='$product' and size='$size' and color='$color' AND price='$price'";
     $result=mysqli_query($conn,$qry);
     if($result){
         $row = mysqli_fetch_assoc($result);
         $updatedQty = $row['quantity'] - $quantity;
         if( $updatedQty < 0){
             echo "<script>alert('Sale Failed! The Remaining Stock is just  ".$row['quantity']."')</script>";
-            mysqli_query($conn,"DELETE FROM `item` WHERE item_name='$product'");
+            mysqli_query($conn,"DELETE FROM `item` WHERE item='$product'and size='$size' and color='$color' AND price='$price'");
             die();
         }
         $price=$row['price'];
         $total=$price*$quantity;
         echo "<script>console.log('" . $row['quantity'] . "')</script>";
-        $qry2="UPDATE `item` SET `quantity`='$updatedQty' WHERE item_name='$product'";
+        $qry2="UPDATE `item` SET `quantity`='$updatedQty' WHERE item='$product' and size='$size' and color='$color' AND price='$price'";
         mysqli_query($conn, $qry2);
 
 
 
-        $saleqry="INSERT INTO sales(consumer,item_name, price, quantity, total, remarks) VALUES('$consumer',
-        '$product','$price','$quantity','$total','$remarks')";
+        $saleqry="INSERT INTO sales(consumer,item, price, quantity, remarks,color,size) VALUES('$consumer',
+        '$product','$price','$quantity','$remarks','$color', '$size')";
        if( mysqli_query($conn,$saleqry)){
             session_start();
             // $_SESSION['item_name']="$consumer";
             // $_SESSION['product']="$product";
             // $_SESSION['qty']="$quantity";
             // $_SESSION['price']="$price";
-           include('bill.php');
+           //include('bill.php');
 
        }
             // echo "<script>alert('Data Recorded Successfully')</script>";

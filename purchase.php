@@ -75,27 +75,27 @@ if(isset($_POST['product'])){
     $color = $_POST['color'];
     $size = $_POST['size'];
 
+    // Check if the product with the same color and size exists
+    $findqry = "SELECT * FROM item WHERE item='$product' AND color='$color' AND size='$size' AND price='$price'";
+    $result = mysqli_query($conn, $findqry);
 
-    $findqry="SELECT * from item WHERE item_name='$product'";
-    $result = mysqli_query($conn, $findqry);    
-    // echo "<script>console.log($result)</script>";
-    if(mysqli_num_rows($result)> 0){
-        $row=mysqli_fetch_assoc($result);
-        $updatedQty=$row['quantity']+$quantity;
-        $color=$row['color']+$color;
-        $size=$row['size']+$size;
+    if(mysqli_num_rows($result) > 0){
+        // If the product with the same color and size exists, update the quantity and price
+        $row = mysqli_fetch_assoc($result);
+        $updatedQty = $row['quantity'] + $quantity;
 
-        $updateqry="UPDATE item SET `quantity`='$updatedQty', `rate`='$price', `color`='$color' ,`size`='$size', WHERE `name`='$product'";
-        if(mysqli_query($conn,$updateqry)){
-        // echo "<script>alert('Data Updated Successfully')</script>";
-        }else{
-        echo "<script>alert('Data is not updated ')</script>";
+        $updateqry = "UPDATE item 
+                      SET quantity='$updatedQty', price='$price' 
+                      WHERE item='$product' AND color='$color' AND size='$size' AND price='$price'";
+        if(mysqli_query($conn, $updateqry)){
+            echo "<script>alert('Data Updated Successfully')</script>";
+        } else {
+            echo "<script>alert('Data Update Failed')</script>";
         } 
-    }
-    //add to inventory
-    else{
-        $qry = "INSERT INTO item(item_name, quantity, price, color, size) VALUES('$product', '$quantity', '$price', '$color', '$size')";
-        
+    } else {
+        // If the product with the same color and size does not exist, insert a new record
+        $qry = "INSERT INTO item(item, quantity, price, color, size) 
+                VALUES('$product', '$quantity', '$price', '$color', '$size')";
         if(mysqli_query($conn, $qry)){
             echo "<script>alert('Data Inserted Successfully')</script>";
         } else {
@@ -103,12 +103,10 @@ if(isset($_POST['product'])){
         }
     }
 
-    //add to Purchase Record
-    $qry2 = "INSERT INTO purchase(item_name, quantity, price, vendor, remarks, size, color) VALUES('$product', '$quantity', '$price'
-    ,'$vendor', '$remarks' ,'$color', '$size')";
-    
+    // Add to Purchase Record
+    $qry2 = "INSERT INTO purchase(item, quantity, price, vendor, remarks, size, color) 
+             VALUES('$product', '$quantity', '$price', '$vendor', '$remarks', '$size', '$color')";
     if(mysqli_query($conn, $qry2)){
-        // echo "<script>alert('Data Inserted into Record Successfully')</script>";
         session_start();
         $_SESSION["product"] = $product;
         $_SESSION["qty"] = $quantity;
@@ -120,5 +118,6 @@ if(isset($_POST['product'])){
     }
 }
 ?>
+
 </body>
 </html>
