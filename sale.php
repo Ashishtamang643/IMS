@@ -10,8 +10,8 @@ $filename=$_SERVER['PHP_SELF'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management System</title>
-    <link rel='stylesheet' href='style.css'>
+    <title>Shoe Management System</title>
+    <link rel='stylesheet' href='style1.css'>
       <style>
     .current{
     background-color:orange;
@@ -23,7 +23,7 @@ $filename=$_SERVER['PHP_SELF'];
 </head>
 <body>
     <header>
-        <h1>Inventory Management System</h1>
+        <h1>Shoe Management System</h1>
     </header>
 
     <div class="container neumorphic">
@@ -48,8 +48,8 @@ $filename=$_SERVER['PHP_SELF'];
             <label for="price">price:</label>
             <input type="text" id="price" name="price" required>
 
-            <label for="profit">profit:</label>
-            <input type="text" id="profit" name="profit" required>
+            <!-- <label for="profit">profit:</label>
+            <input type="text" id="profit" name="profit" required> -->
 
             <label for='remarks'>Remarks</label>
             <textarea name='remarks' id='remarks'></textarea>
@@ -69,7 +69,7 @@ $filename=$_SERVER['PHP_SELF'];
     </div>
 
     <footer>
-        <p>&copy;Inventory Management System</p>
+        <p>&copy;Shoe Management System</p>
     </footer>
 </>
 
@@ -119,7 +119,7 @@ if(isset($_POST['product'])){
        }
             // echo "<script>alert('Data Recorded Successfully')</script>";
     } else {
-        echo "<script>console.log('kuch gadbad hain ')</script>";
+        echo "<script>console.log('Something went wrong ')</script>";
     }
 }
 ?>

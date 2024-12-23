@@ -6,8 +6,8 @@ $filename=$_SERVER['PHP_SELF'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management System</title>
-    <link rel='stylesheet' href='style.css'>
+    <title>Shoe Management System</title>
+    <link rel='stylesheet' href='style1.css'>
     <style>
     .current{
     background-color:orange;
@@ -22,7 +22,7 @@ $filename=$_SERVER['PHP_SELF'];
 <body>
 
     <header>
-        <h1>Inventory Management System</h1>
+        <h1>Shoe Management System</h1>
     </header>
 
     <div class="container neumorphic">
@@ -69,7 +69,7 @@ $filename=$_SERVER['PHP_SELF'];
        </div>
     </div>
     <footer>
-        <p>&copy;Inventory Management System</p>
+        <p>&copy;Shoe Management System</p>
     </footer>
     <script src='script.js'></script>
 </body>

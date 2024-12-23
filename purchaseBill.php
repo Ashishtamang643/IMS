@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bills for payment</title>
     <script src="script.js"></script>
 
     <style>
@@ -54,7 +54,7 @@
 
                       <tr>
                           <td>Consumer Name</td>
-                          <td>AB Inventory</td>
+                          <td>AB FootWear</td>
                       </tr>
                       <tr>
                           <td>Supplier Name</td>

@@ -6,8 +6,8 @@ $filename=$_SERVER['PHP_SELF'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management System</title>
-    <link rel='stylesheet' href='style.css'>
+    <title>Shoe Management System</title>
+    <link rel='stylesheet' href='style1.css'>
     <style>
     .current{
     background-color:orange;
@@ -20,7 +20,7 @@ $filename=$_SERVER['PHP_SELF'];
 <body>
 
     <header>
-        <h1>Inventory Management System</h1>
+        <h1>Shoe Management System</h1>
     </header>
 
     <div class="container neumorphic">
@@ -61,7 +61,7 @@ $filename=$_SERVER['PHP_SELF'];
     </div>
 
     <footer>
-        <p>&copy;Inventory Management System</p>
+        <p>&copy;Shoe Management System</p>
     </footer>
 
     <?php
@@ -75,12 +75,13 @@ if(isset($_POST['product'])){
     $color = $_POST['color'];
     $size = $_POST['size'];
 
-    // Check if the product with the same color and size exists
+    // Check if the product with the sme color and sizeexists
     $findqry = "SELECT * FROM item WHERE item='$product' AND color='$color' AND size='$size' AND price='$price'";
     $result = mysqli_query($conn, $findqry);
 
     if(mysqli_num_rows($result) > 0){
-        // If the product with the same color and size exists, update the quantity and price
+        // If the produt with the same color and size exists, update thequantity and price
+        //otherwise create new product in stock
         $row = mysqli_fetch_assoc($result);
         $updatedQty = $row['quantity'] + $quantity;
 

@@ -5,71 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e0f7fa; 
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-        .login-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 350px;
-            text-align: center;
-        }
+    .login-container {
+        background-color: #ffffff; 
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(87, 108, 143, 0.61); 
+        padding: 20px;
+        width: 350px;
+        text-align: center;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-        }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
+    h2 {
+        margin-bottom: 20px;
+        color: #00796b; 
+    }
 
-        label {
-            text-align: left;
-            margin-bottom: 5px;
-            color: #555;
-        }
+    label {
+        text-align: left;
+        margin-bottom: 5px;
+        color: #555; 
+        font-weight: bold;
+    }
 
-        input {
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    input {
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #b2ebf2; 
+        border-radius: 4px;
+        background-color: #e0f7fa; 
+    }
 
-        button {
-            background-color: #444;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    button {
+        background-color: #00008B; 
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-        button:hover {
-            background-color: #222;
-        }
+    button:hover {
+        background-color: #1e90ff; 
+    }
 
-        a{
-            text-decoration: none;
-        }
+    a {
+        text-decoration: none;
+        color: #00008B; 
+        font-weight: bold;
+    }
 
-        </style>
+    a:hover {
+        color: #1e90ff; 
+    }
+</style>
 </head>
 <body>
     <div class="login-container">
         <form action="index.php" method="post">
-            <h2>Welcome to Inventory Management System</h2>
+            <h2>Welcome to Shoe Management System</h2>
             <label for="username">Email:</label>
             <input type="text" id="username" name="email" required>
             
@@ -83,6 +91,7 @@
     </div>
 
 <?php
+
 if(isset($_POST['email']) && isset($_POST['password'])){
     include('db.php');
     $email = $_POST['email'];

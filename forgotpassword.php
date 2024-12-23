@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password Issue</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,20 +70,15 @@
     <div class="login-container">
         <form action="index.php" method="post">
             <h2>Password Recovery</h2>
-            <!-- <label for="username">Email:</label>
-            <input type="text" id="username" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <a href="" style="margin-left: auto; margin-bottom: 10px">Forgot password?</a>
-            <button type="submit">Login</button> -->
             <h2?>Contact to Admin</h2>
+            <h4>Ashish Tamang</h4>
+            <h4>contact No:9841000000</h4>
+            <h4>Email:ashtmg9@gmail.com</h4>
         </form>
         <p>Don't have an account?<a href="signup.php">Signup</a>
     </div>
 
-<?php
+ <?php
 if(isset($_POST['email']) && isset($_POST['password'])){
     include('db.php');
     $email = $_POST['email'];
@@ -105,6 +100,6 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         echo '<script>alert("User doesnot Exist")</script>';
     }
 }
-?>
+?> 
 </body>
 </html>

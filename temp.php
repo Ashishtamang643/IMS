@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -119,7 +119,7 @@ footer {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Table rows with inventory data go here -->
+                    Table rows with inventory data go here -->
                     <tr>
                         <td>Croissant</td>
                         <td>50</td>
@@ -140,3 +140,8 @@ footer {
 
 </body>
 </html>
+
+
+
+
+IMS and TEMP ...   -> Unnecessary
