@@ -45,9 +45,14 @@ $filename=$_SERVER['PHP_SELF'];
                     <th>consumer</th>
                     <th>Product</th>
                     <th>price</th>
+                    <th>Profit</th>
+                    <th>Selling Price</th>
                     <th>quantity</th>
                     <th>Total</th>
                     <th>Remarks</th>
+                    
+                    
+                    
                 </tr>";
                 while($row=$result->fetch_assoc()){
                     $total=$row['price']*$row['quantity'];
@@ -55,6 +60,8 @@ $filename=$_SERVER['PHP_SELF'];
                     echo '<td>'.$row['consumer'].'</td>';
                         echo '<td>'.$row['item'].'</td>';
                         echo '<td>'.$row['price'].'</td>';
+                        echo '<td>'.$row['profit'].'</td>';
+                        echo '<td>'.$row['profit']+$row['price'].'</td>';
                         echo '<td>'.$row['quantity'].'</td>';
                         echo '<td>'.$total.'</td>';
                         echo '<td>'.$row['remarks'].'</td>';

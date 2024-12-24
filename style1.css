@@ -167,4 +167,12 @@ td {
     font-weight: bold;
     /* background-color: #e0f7fa;  */
     border: 1px solid #b2ebf2; 
-} */
+} 
+
+input, select {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #b2ebf2;
+    border-radius: 4px;
+    background-color: #e0f7fa;
+}
